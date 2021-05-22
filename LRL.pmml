@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PMML version="4.2" xmlns="http://www.dmg.org/PMML-4_2">
+  <Header copyright="henry">
+    <Application name="KNIME" version="4.3.2"/>
+  </Header>
+  <DataDictionary numberOfFields="4">
+    <DataField name="INFECTADOS" optype="continuous" dataType="double">
+      <Interval closure="closedClosed" leftMargin="0.0" rightMargin="1.0"/>
+    </DataField>
+    <DataField name="DECESOS" optype="continuous" dataType="double">
+      <Interval closure="closedClosed" leftMargin="0.0" rightMargin="1.0"/>
+    </DataField>
+    <DataField name="VACUNAS" optype="continuous" dataType="double">
+      <Interval closure="closedClosed" leftMargin="0.0" rightMargin="1.0"/>
+    </DataField>
+    <DataField name="SEMAFORO" optype="categorical" dataType="string">
+      <Value value="1_VERDE"/>
+      <Value value="2_AMARILLO"/>
+      <Value value="3_AMBAR"/>
+      <Value value="4_ROJO"/>
+    </DataField>
+  </DataDictionary>
+  <GeneralRegressionModel modelType="multinomialLogistic" functionName="classification" algorithmName="LogisticRegression" modelName="KNIME Logistic Regression" targetReferenceCategory="2_AMARILLO">
+    <MiningSchema>
+      <MiningField name="INFECTADOS" invalidValueTreatment="asIs"/>
+      <MiningField name="DECESOS" invalidValueTreatment="asIs"/>
+      <MiningField name="VACUNAS" invalidValueTreatment="asIs"/>
+      <MiningField name="SEMAFORO" invalidValueTreatment="asIs" usageType="target"/>
+    </MiningSchema>
+    <ParameterList>
+      <Parameter name="p0" label="Intercept"/>
+      <Parameter name="p1" label="INFECTADOS"/>
+      <Parameter name="p2" label="DECESOS"/>
+      <Parameter name="p3" label="VACUNAS"/>
+    </ParameterList>
+    <FactorList/>
+    <CovariateList>
+      <Predictor name="INFECTADOS"/>
+      <Predictor name="DECESOS"/>
+      <Predictor name="VACUNAS"/>
+    </CovariateList>
+    <PPMatrix>
+      <PPCell value="1" predictorName="INFECTADOS" parameterName="p1"/>
+      <PPCell value="1" predictorName="DECESOS" parameterName="p2"/>
+      <PPCell value="1" predictorName="VACUNAS" parameterName="p3"/>
+    </PPMatrix>
+    <ParamMatrix>
+      <PCell targetCategory="1_VERDE" parameterName="p0" beta="-1.1353542602892641" df="1"/>
+      <PCell targetCategory="3_AMBAR" parameterName="p0" beta="-0.3662588043237687" df="1"/>
+      <PCell targetCategory="4_ROJO" parameterName="p0" beta="-0.7516470177183265" df="1"/>
+      <PCell targetCategory="1_VERDE" parameterName="p1" beta="133.34639708460858" df="1"/>
+      <PCell targetCategory="3_AMBAR" parameterName="p1" beta="-147.44711858977146" df="1"/>
+      <PCell targetCategory="4_ROJO" parameterName="p1" beta="-311.5126692676626" df="1"/>
+      <PCell targetCategory="1_VERDE" parameterName="p2" beta="-229.98737175653503" df="1"/>
+      <PCell targetCategory="3_AMBAR" parameterName="p2" beta="101.76727790803433" df="1"/>
+      <PCell targetCategory="4_ROJO" parameterName="p2" beta="177.2815367793873" df="1"/>
+      <PCell targetCategory="1_VERDE" parameterName="p3" beta="-5.01920030200492" df="1"/>
+      <PCell targetCategory="3_AMBAR" parameterName="p3" beta="1.98645739012371" df="1"/>
+      <PCell targetCategory="4_ROJO" parameterName="p3" beta="3.3960338790119318" df="1"/>
+    </ParamMatrix>
+  </GeneralRegressionModel>
+</PMML>

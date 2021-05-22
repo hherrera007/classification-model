@@ -1,0 +1,486 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PMML version="4.2" xmlns="http://www.dmg.org/PMML-4_2">
+  <Header copyright="henry">
+    <Application name="KNIME" version="4.3.2"/>
+  </Header>
+  <DataDictionary numberOfFields="4">
+    <DataField name="INFECTADOS" optype="continuous" dataType="integer">
+      <Interval closure="closedClosed" leftMargin="22.0" rightMargin="5373.0"/>
+    </DataField>
+    <DataField name="DECESOS" optype="continuous" dataType="integer">
+      <Interval closure="closedClosed" leftMargin="1.0" rightMargin="187.0"/>
+    </DataField>
+    <DataField name="VACUNAS" optype="continuous" dataType="integer">
+      <Interval closure="closedClosed" leftMargin="0.0" rightMargin="1306416.0"/>
+    </DataField>
+    <DataField name="SEMAFORO" optype="categorical" dataType="string">
+      <Value value="1_VERDE"/>
+      <Value value="2_AMARILLO"/>
+      <Value value="3_AMBAR"/>
+      <Value value="4_ROJO"/>
+    </DataField>
+  </DataDictionary>
+  <TreeModel modelName="DecisionTree" functionName="classification" splitCharacteristic="binarySplit" missingValueStrategy="lastPrediction" noTrueChildStrategy="returnNullPrediction">
+    <MiningSchema>
+      <MiningField name="INFECTADOS" invalidValueTreatment="asIs"/>
+      <MiningField name="DECESOS" invalidValueTreatment="asIs"/>
+      <MiningField name="VACUNAS" invalidValueTreatment="asIs"/>
+      <MiningField name="SEMAFORO" invalidValueTreatment="asIs" usageType="target"/>
+    </MiningSchema>
+    <Node id="0" score="2_AMARILLO" recordCount="295.0">
+      <True/>
+      <ScoreDistribution value="1_VERDE" recordCount="40.0"/>
+      <ScoreDistribution value="2_AMARILLO" recordCount="168.0"/>
+      <ScoreDistribution value="3_AMBAR" recordCount="60.0"/>
+      <ScoreDistribution value="4_ROJO" recordCount="27.0"/>
+      <Node id="1" score="2_AMARILLO" recordCount="276.0">
+        <SimplePredicate field="VACUNAS" operator="lessOrEqual" value="687909.0"/>
+        <ScoreDistribution value="1_VERDE" recordCount="40.0"/>
+        <ScoreDistribution value="2_AMARILLO" recordCount="167.0"/>
+        <ScoreDistribution value="3_AMBAR" recordCount="47.0"/>
+        <ScoreDistribution value="4_ROJO" recordCount="22.0"/>
+        <Node id="2" score="2_AMARILLO" recordCount="145.0">
+          <SimplePredicate field="INFECTADOS" operator="lessOrEqual" value="1688.5"/>
+          <ScoreDistribution value="1_VERDE" recordCount="15.0"/>
+          <ScoreDistribution value="2_AMARILLO" recordCount="70.0"/>
+          <ScoreDistribution value="3_AMBAR" recordCount="38.0"/>
+          <ScoreDistribution value="4_ROJO" recordCount="22.0"/>
+          <Node id="3" score="2_AMARILLO" recordCount="91.0">
+            <SimplePredicate field="DECESOS" operator="lessOrEqual" value="43.5"/>
+            <ScoreDistribution value="1_VERDE" recordCount="15.0"/>
+            <ScoreDistribution value="2_AMARILLO" recordCount="59.0"/>
+            <ScoreDistribution value="3_AMBAR" recordCount="12.0"/>
+            <ScoreDistribution value="4_ROJO" recordCount="5.0"/>
+            <Node id="4" score="3_AMBAR" recordCount="13.0">
+              <SimplePredicate field="INFECTADOS" operator="lessOrEqual" value="395.5"/>
+              <ScoreDistribution value="1_VERDE" recordCount="0.0"/>
+              <ScoreDistribution value="2_AMARILLO" recordCount="2.0"/>
+              <ScoreDistribution value="3_AMBAR" recordCount="6.0"/>
+              <ScoreDistribution value="4_ROJO" recordCount="5.0"/>
+              <Node id="5" score="2_AMARILLO" recordCount="2.0">
+                <SimplePredicate field="DECESOS" operator="lessOrEqual" value="2.5"/>
+                <ScoreDistribution value="1_VERDE" recordCount="0.0"/>
+                <ScoreDistribution value="2_AMARILLO" recordCount="2.0"/>
+                <ScoreDistribution value="3_AMBAR" recordCount="0.0"/>
+                <ScoreDistribution value="4_ROJO" recordCount="0.0"/>
+              </Node>
+              <Node id="6" score="3_AMBAR" recordCount="11.0">
+                <SimplePredicate field="DECESOS" operator="greaterThan" value="2.5"/>
+                <ScoreDistribution value="1_VERDE" recordCount="0.0"/>
+                <ScoreDistribution value="2_AMARILLO" recordCount="0.0"/>
+                <ScoreDistribution value="3_AMBAR" recordCount="6.0"/>
+                <ScoreDistribution value="4_ROJO" recordCount="5.0"/>
+                <Node id="7" score="3_AMBAR" recordCount="9.0">
+                  <SimplePredicate field="DECESOS" operator="lessOrEqual" value="25.0"/>
+                  <ScoreDistribution value="1_VERDE" recordCount="0.0"/>
+                  <ScoreDistribution value="2_AMARILLO" recordCount="0.0"/>
+                  <ScoreDistribution value="3_AMBAR" recordCount="6.0"/>
+                  <ScoreDistribution value="4_ROJO" recordCount="3.0"/>
+                  <Node id="8" score="4_ROJO" recordCount="4.0">
+                    <SimplePredicate field="DECESOS" operator="lessOrEqual" value="10.0"/>
+                    <ScoreDistribution value="1_VERDE" recordCount="0.0"/>
+                    <ScoreDistribution value="2_AMARILLO" recordCount="0.0"/>
+                    <ScoreDistribution value="3_AMBAR" recordCount="1.0"/>
+                    <ScoreDistribution value="4_ROJO" recordCount="3.0"/>
+                  </Node>
+                  <Node id="11" score="3_AMBAR" recordCount="5.0">
+                    <SimplePredicate field="DECESOS" operator="greaterThan" value="10.0"/>
+                    <ScoreDistribution value="1_VERDE" recordCount="0.0"/>
+                    <ScoreDistribution value="2_AMARILLO" recordCount="0.0"/>
+                    <ScoreDistribution value="3_AMBAR" recordCount="5.0"/>
+                    <ScoreDistribution value="4_ROJO" recordCount="0.0"/>
+                  </Node>
+                </Node>
+                <Node id="12" score="4_ROJO" recordCount="2.0">
+                  <SimplePredicate field="DECESOS" operator="greaterThan" value="25.0"/>
+                  <ScoreDistribution value="1_VERDE" recordCount="0.0"/>
+                  <ScoreDistribution value="2_AMARILLO" recordCount="0.0"/>
+                  <ScoreDistribution value="3_AMBAR" recordCount="0.0"/>
+                  <ScoreDistribution value="4_ROJO" recordCount="2.0"/>
+                </Node>
+              </Node>
+            </Node>
+            <Node id="13" score="2_AMARILLO" recordCount="78.0">
+              <SimplePredicate field="INFECTADOS" operator="greaterThan" value="395.5"/>
+              <ScoreDistribution value="1_VERDE" recordCount="15.0"/>
+              <ScoreDistribution value="2_AMARILLO" recordCount="57.0"/>
+              <ScoreDistribution value="3_AMBAR" recordCount="6.0"/>
+              <ScoreDistribution value="4_ROJO" recordCount="0.0"/>
+              <Node id="14" score="2_AMARILLO" recordCount="71.0">
+                <SimplePredicate field="INFECTADOS" operator="lessOrEqual" value="1326.5"/>
+                <ScoreDistribution value="1_VERDE" recordCount="9.0"/>
+                <ScoreDistribution value="2_AMARILLO" recordCount="56.0"/>
+                <ScoreDistribution value="3_AMBAR" recordCount="6.0"/>
+                <ScoreDistribution value="4_ROJO" recordCount="0.0"/>
+                <Node id="15" score="2_AMARILLO" recordCount="58.0">
+                  <SimplePredicate field="DECESOS" operator="lessOrEqual" value="30.5"/>
+                  <ScoreDistribution value="1_VERDE" recordCount="9.0"/>
+                  <ScoreDistribution value="2_AMARILLO" recordCount="48.0"/>
+                  <ScoreDistribution value="3_AMBAR" recordCount="1.0"/>
+                  <ScoreDistribution value="4_ROJO" recordCount="0.0"/>
+                  <Node id="16" score="2_AMARILLO" recordCount="56.0">
+                    <SimplePredicate field="INFECTADOS" operator="lessOrEqual" value="1162.5"/>
+                    <ScoreDistribution value="1_VERDE" recordCount="7.0"/>
+                    <ScoreDistribution value="2_AMARILLO" recordCount="48.0"/>
+                    <ScoreDistribution value="3_AMBAR" recordCount="1.0"/>
+                    <ScoreDistribution value="4_ROJO" recordCount="0.0"/>
+                    <Node id="17" score="1_VERDE" recordCount="6.0">
+                      <SimplePredicate field="DECESOS" operator="lessOrEqual" value="14.5"/>
+                      <ScoreDistribution value="1_VERDE" recordCount="3.0"/>
+                      <ScoreDistribution value="2_AMARILLO" recordCount="3.0"/>
+                      <ScoreDistribution value="3_AMBAR" recordCount="0.0"/>
+                      <ScoreDistribution value="4_ROJO" recordCount="0.0"/>
+                      <Node id="18" score="2_AMARILLO" recordCount="3.0">
+                        <SimplePredicate field="INFECTADOS" operator="lessOrEqual" value="604.5"/>
+                        <ScoreDistribution value="1_VERDE" recordCount="0.0"/>
+                        <ScoreDistribution value="2_AMARILLO" recordCount="3.0"/>
+                        <ScoreDistribution value="3_AMBAR" recordCount="0.0"/>
+                        <ScoreDistribution value="4_ROJO" recordCount="0.0"/>
+                      </Node>
+                      <Node id="19" score="1_VERDE" recordCount="3.0">
+                        <SimplePredicate field="INFECTADOS" operator="greaterThan" value="604.5"/>
+                        <ScoreDistribution value="1_VERDE" recordCount="3.0"/>
+                        <ScoreDistribution value="2_AMARILLO" recordCount="0.0"/>
+                        <ScoreDistribution value="3_AMBAR" recordCount="0.0"/>
+                        <ScoreDistribution value="4_ROJO" recordCount="0.0"/>
+                      </Node>
+                    </Node>
+                    <Node id="20" score="2_AMARILLO" recordCount="50.0">
+                      <SimplePredicate field="DECESOS" operator="greaterThan" value="14.5"/>
+                      <ScoreDistribution value="1_VERDE" recordCount="4.0"/>
+                      <ScoreDistribution value="2_AMARILLO" recordCount="45.0"/>
+                      <ScoreDistribution value="3_AMBAR" recordCount="1.0"/>
+                      <ScoreDistribution value="4_ROJO" recordCount="0.0"/>
+                      <Node id="21" score="2_AMARILLO" recordCount="36.0">
+                        <SimplePredicate field="INFECTADOS" operator="lessOrEqual" value="868.5"/>
+                        <ScoreDistribution value="1_VERDE" recordCount="0.0"/>
+                        <ScoreDistribution value="2_AMARILLO" recordCount="35.0"/>
+                        <ScoreDistribution value="3_AMBAR" recordCount="1.0"/>
+                        <ScoreDistribution value="4_ROJO" recordCount="0.0"/>
+                      </Node>
+                      <Node id="24" score="2_AMARILLO" recordCount="14.0">
+                        <SimplePredicate field="INFECTADOS" operator="greaterThan" value="868.5"/>
+                        <ScoreDistribution value="1_VERDE" recordCount="4.0"/>
+                        <ScoreDistribution value="2_AMARILLO" recordCount="10.0"/>
+                        <ScoreDistribution value="3_AMBAR" recordCount="0.0"/>
+                        <ScoreDistribution value="4_ROJO" recordCount="0.0"/>
+                        <Node id="25" score="1_VERDE" recordCount="5.0">
+                          <SimplePredicate field="DECESOS" operator="lessOrEqual" value="21.5"/>
+                          <ScoreDistribution value="1_VERDE" recordCount="4.0"/>
+                          <ScoreDistribution value="2_AMARILLO" recordCount="1.0"/>
+                          <ScoreDistribution value="3_AMBAR" recordCount="0.0"/>
+                          <ScoreDistribution value="4_ROJO" recordCount="0.0"/>
+                        </Node>
+                        <Node id="28" score="2_AMARILLO" recordCount="9.0">
+                          <SimplePredicate field="DECESOS" operator="greaterThan" value="21.5"/>
+                          <ScoreDistribution value="1_VERDE" recordCount="0.0"/>
+                          <ScoreDistribution value="2_AMARILLO" recordCount="9.0"/>
+                          <ScoreDistribution value="3_AMBAR" recordCount="0.0"/>
+                          <ScoreDistribution value="4_ROJO" recordCount="0.0"/>
+                        </Node>
+                      </Node>
+                    </Node>
+                  </Node>
+                  <Node id="29" score="1_VERDE" recordCount="2.0">
+                    <SimplePredicate field="INFECTADOS" operator="greaterThan" value="1162.5"/>
+                    <ScoreDistribution value="1_VERDE" recordCount="2.0"/>
+                    <ScoreDistribution value="2_AMARILLO" recordCount="0.0"/>
+                    <ScoreDistribution value="3_AMBAR" recordCount="0.0"/>
+                    <ScoreDistribution value="4_ROJO" recordCount="0.0"/>
+                  </Node>
+                </Node>
+                <Node id="30" score="2_AMARILLO" recordCount="13.0">
+                  <SimplePredicate field="DECESOS" operator="greaterThan" value="30.5"/>
+                  <ScoreDistribution value="1_VERDE" recordCount="0.0"/>
+                  <ScoreDistribution value="2_AMARILLO" recordCount="8.0"/>
+                  <ScoreDistribution value="3_AMBAR" recordCount="5.0"/>
+                  <ScoreDistribution value="4_ROJO" recordCount="0.0"/>
+                  <Node id="31" score="3_AMBAR" recordCount="6.0">
+                    <SimplePredicate field="INFECTADOS" operator="lessOrEqual" value="861.0"/>
+                    <ScoreDistribution value="1_VERDE" recordCount="0.0"/>
+                    <ScoreDistribution value="2_AMARILLO" recordCount="1.0"/>
+                    <ScoreDistribution value="3_AMBAR" recordCount="5.0"/>
+                    <ScoreDistribution value="4_ROJO" recordCount="0.0"/>
+                  </Node>
+                  <Node id="34" score="2_AMARILLO" recordCount="7.0">
+                    <SimplePredicate field="INFECTADOS" operator="greaterThan" value="861.0"/>
+                    <ScoreDistribution value="1_VERDE" recordCount="0.0"/>
+                    <ScoreDistribution value="2_AMARILLO" recordCount="7.0"/>
+                    <ScoreDistribution value="3_AMBAR" recordCount="0.0"/>
+                    <ScoreDistribution value="4_ROJO" recordCount="0.0"/>
+                  </Node>
+                </Node>
+              </Node>
+              <Node id="35" score="1_VERDE" recordCount="7.0">
+                <SimplePredicate field="INFECTADOS" operator="greaterThan" value="1326.5"/>
+                <ScoreDistribution value="1_VERDE" recordCount="6.0"/>
+                <ScoreDistribution value="2_AMARILLO" recordCount="1.0"/>
+                <ScoreDistribution value="3_AMBAR" recordCount="0.0"/>
+                <ScoreDistribution value="4_ROJO" recordCount="0.0"/>
+              </Node>
+            </Node>
+          </Node>
+          <Node id="38" score="3_AMBAR" recordCount="54.0">
+            <SimplePredicate field="DECESOS" operator="greaterThan" value="43.5"/>
+            <ScoreDistribution value="1_VERDE" recordCount="0.0"/>
+            <ScoreDistribution value="2_AMARILLO" recordCount="11.0"/>
+            <ScoreDistribution value="3_AMBAR" recordCount="26.0"/>
+            <ScoreDistribution value="4_ROJO" recordCount="17.0"/>
+            <Node id="39" score="4_ROJO" recordCount="7.0">
+              <SimplePredicate field="INFECTADOS" operator="lessOrEqual" value="710.0"/>
+              <ScoreDistribution value="1_VERDE" recordCount="0.0"/>
+              <ScoreDistribution value="2_AMARILLO" recordCount="0.0"/>
+              <ScoreDistribution value="3_AMBAR" recordCount="0.0"/>
+              <ScoreDistribution value="4_ROJO" recordCount="7.0"/>
+            </Node>
+            <Node id="40" score="3_AMBAR" recordCount="47.0">
+              <SimplePredicate field="INFECTADOS" operator="greaterThan" value="710.0"/>
+              <ScoreDistribution value="1_VERDE" recordCount="0.0"/>
+              <ScoreDistribution value="2_AMARILLO" recordCount="11.0"/>
+              <ScoreDistribution value="3_AMBAR" recordCount="26.0"/>
+              <ScoreDistribution value="4_ROJO" recordCount="10.0"/>
+              <Node id="41" score="3_AMBAR" recordCount="31.0">
+                <SimplePredicate field="DECESOS" operator="lessOrEqual" value="87.5"/>
+                <ScoreDistribution value="1_VERDE" recordCount="0.0"/>
+                <ScoreDistribution value="2_AMARILLO" recordCount="11.0"/>
+                <ScoreDistribution value="3_AMBAR" recordCount="19.0"/>
+                <ScoreDistribution value="4_ROJO" recordCount="1.0"/>
+                <Node id="42" score="3_AMBAR" recordCount="16.0">
+                  <SimplePredicate field="INFECTADOS" operator="lessOrEqual" value="1309.0"/>
+                  <ScoreDistribution value="1_VERDE" recordCount="0.0"/>
+                  <ScoreDistribution value="2_AMARILLO" recordCount="1.0"/>
+                  <ScoreDistribution value="3_AMBAR" recordCount="14.0"/>
+                  <ScoreDistribution value="4_ROJO" recordCount="1.0"/>
+                </Node>
+                <Node id="49" score="2_AMARILLO" recordCount="15.0">
+                  <SimplePredicate field="INFECTADOS" operator="greaterThan" value="1309.0"/>
+                  <ScoreDistribution value="1_VERDE" recordCount="0.0"/>
+                  <ScoreDistribution value="2_AMARILLO" recordCount="10.0"/>
+                  <ScoreDistribution value="3_AMBAR" recordCount="5.0"/>
+                  <ScoreDistribution value="4_ROJO" recordCount="0.0"/>
+                  <Node id="50" score="2_AMARILLO" recordCount="8.0">
+                    <SimplePredicate field="DECESOS" operator="lessOrEqual" value="74.5"/>
+                    <ScoreDistribution value="1_VERDE" recordCount="0.0"/>
+                    <ScoreDistribution value="2_AMARILLO" recordCount="8.0"/>
+                    <ScoreDistribution value="3_AMBAR" recordCount="0.0"/>
+                    <ScoreDistribution value="4_ROJO" recordCount="0.0"/>
+                  </Node>
+                  <Node id="51" score="3_AMBAR" recordCount="7.0">
+                    <SimplePredicate field="DECESOS" operator="greaterThan" value="74.5"/>
+                    <ScoreDistribution value="1_VERDE" recordCount="0.0"/>
+                    <ScoreDistribution value="2_AMARILLO" recordCount="2.0"/>
+                    <ScoreDistribution value="3_AMBAR" recordCount="5.0"/>
+                    <ScoreDistribution value="4_ROJO" recordCount="0.0"/>
+                    <Node id="52" score="3_AMBAR" recordCount="4.0">
+                      <SimplePredicate field="INFECTADOS" operator="lessOrEqual" value="1592.5"/>
+                      <ScoreDistribution value="1_VERDE" recordCount="0.0"/>
+                      <ScoreDistribution value="2_AMARILLO" recordCount="0.0"/>
+                      <ScoreDistribution value="3_AMBAR" recordCount="4.0"/>
+                      <ScoreDistribution value="4_ROJO" recordCount="0.0"/>
+                    </Node>
+                    <Node id="53" score="2_AMARILLO" recordCount="3.0">
+                      <SimplePredicate field="INFECTADOS" operator="greaterThan" value="1592.5"/>
+                      <ScoreDistribution value="1_VERDE" recordCount="0.0"/>
+                      <ScoreDistribution value="2_AMARILLO" recordCount="2.0"/>
+                      <ScoreDistribution value="3_AMBAR" recordCount="1.0"/>
+                      <ScoreDistribution value="4_ROJO" recordCount="0.0"/>
+                    </Node>
+                  </Node>
+                </Node>
+              </Node>
+              <Node id="54" score="4_ROJO" recordCount="16.0">
+                <SimplePredicate field="DECESOS" operator="greaterThan" value="87.5"/>
+                <ScoreDistribution value="1_VERDE" recordCount="0.0"/>
+                <ScoreDistribution value="2_AMARILLO" recordCount="0.0"/>
+                <ScoreDistribution value="3_AMBAR" recordCount="7.0"/>
+                <ScoreDistribution value="4_ROJO" recordCount="9.0"/>
+                <Node id="55" score="4_ROJO" recordCount="8.0">
+                  <SimplePredicate field="INFECTADOS" operator="lessOrEqual" value="1351.5"/>
+                  <ScoreDistribution value="1_VERDE" recordCount="0.0"/>
+                  <ScoreDistribution value="2_AMARILLO" recordCount="0.0"/>
+                  <ScoreDistribution value="3_AMBAR" recordCount="0.0"/>
+                  <ScoreDistribution value="4_ROJO" recordCount="8.0"/>
+                </Node>
+                <Node id="56" score="3_AMBAR" recordCount="8.0">
+                  <SimplePredicate field="INFECTADOS" operator="greaterThan" value="1351.5"/>
+                  <ScoreDistribution value="1_VERDE" recordCount="0.0"/>
+                  <ScoreDistribution value="2_AMARILLO" recordCount="0.0"/>
+                  <ScoreDistribution value="3_AMBAR" recordCount="7.0"/>
+                  <ScoreDistribution value="4_ROJO" recordCount="1.0"/>
+                </Node>
+              </Node>
+            </Node>
+          </Node>
+        </Node>
+        <Node id="59" score="2_AMARILLO" recordCount="131.0">
+          <SimplePredicate field="INFECTADOS" operator="greaterThan" value="1688.5"/>
+          <ScoreDistribution value="1_VERDE" recordCount="25.0"/>
+          <ScoreDistribution value="2_AMARILLO" recordCount="97.0"/>
+          <ScoreDistribution value="3_AMBAR" recordCount="9.0"/>
+          <ScoreDistribution value="4_ROJO" recordCount="0.0"/>
+          <Node id="60" score="1_VERDE" recordCount="28.0">
+            <SimplePredicate field="DECESOS" operator="lessOrEqual" value="65.5"/>
+            <ScoreDistribution value="1_VERDE" recordCount="17.0"/>
+            <ScoreDistribution value="2_AMARILLO" recordCount="11.0"/>
+            <ScoreDistribution value="3_AMBAR" recordCount="0.0"/>
+            <ScoreDistribution value="4_ROJO" recordCount="0.0"/>
+            <Node id="61" score="2_AMARILLO" recordCount="5.0">
+              <SimplePredicate field="INFECTADOS" operator="lessOrEqual" value="1887.5"/>
+              <ScoreDistribution value="1_VERDE" recordCount="0.0"/>
+              <ScoreDistribution value="2_AMARILLO" recordCount="5.0"/>
+              <ScoreDistribution value="3_AMBAR" recordCount="0.0"/>
+              <ScoreDistribution value="4_ROJO" recordCount="0.0"/>
+            </Node>
+            <Node id="62" score="1_VERDE" recordCount="23.0">
+              <SimplePredicate field="INFECTADOS" operator="greaterThan" value="1887.5"/>
+              <ScoreDistribution value="1_VERDE" recordCount="17.0"/>
+              <ScoreDistribution value="2_AMARILLO" recordCount="6.0"/>
+              <ScoreDistribution value="3_AMBAR" recordCount="0.0"/>
+              <ScoreDistribution value="4_ROJO" recordCount="0.0"/>
+              <Node id="63" score="1_VERDE" recordCount="9.0">
+                <SimplePredicate field="DECESOS" operator="lessOrEqual" value="42.0"/>
+                <ScoreDistribution value="1_VERDE" recordCount="9.0"/>
+                <ScoreDistribution value="2_AMARILLO" recordCount="0.0"/>
+                <ScoreDistribution value="3_AMBAR" recordCount="0.0"/>
+                <ScoreDistribution value="4_ROJO" recordCount="0.0"/>
+              </Node>
+              <Node id="64" score="1_VERDE" recordCount="14.0">
+                <SimplePredicate field="DECESOS" operator="greaterThan" value="42.0"/>
+                <ScoreDistribution value="1_VERDE" recordCount="8.0"/>
+                <ScoreDistribution value="2_AMARILLO" recordCount="6.0"/>
+                <ScoreDistribution value="3_AMBAR" recordCount="0.0"/>
+                <ScoreDistribution value="4_ROJO" recordCount="0.0"/>
+                <Node id="65" score="2_AMARILLO" recordCount="6.0">
+                  <SimplePredicate field="INFECTADOS" operator="lessOrEqual" value="3038.0"/>
+                  <ScoreDistribution value="1_VERDE" recordCount="0.0"/>
+                  <ScoreDistribution value="2_AMARILLO" recordCount="6.0"/>
+                  <ScoreDistribution value="3_AMBAR" recordCount="0.0"/>
+                  <ScoreDistribution value="4_ROJO" recordCount="0.0"/>
+                </Node>
+                <Node id="66" score="1_VERDE" recordCount="8.0">
+                  <SimplePredicate field="INFECTADOS" operator="greaterThan" value="3038.0"/>
+                  <ScoreDistribution value="1_VERDE" recordCount="8.0"/>
+                  <ScoreDistribution value="2_AMARILLO" recordCount="0.0"/>
+                  <ScoreDistribution value="3_AMBAR" recordCount="0.0"/>
+                  <ScoreDistribution value="4_ROJO" recordCount="0.0"/>
+                </Node>
+              </Node>
+            </Node>
+          </Node>
+          <Node id="67" score="2_AMARILLO" recordCount="103.0">
+            <SimplePredicate field="DECESOS" operator="greaterThan" value="65.5"/>
+            <ScoreDistribution value="1_VERDE" recordCount="8.0"/>
+            <ScoreDistribution value="2_AMARILLO" recordCount="86.0"/>
+            <ScoreDistribution value="3_AMBAR" recordCount="9.0"/>
+            <ScoreDistribution value="4_ROJO" recordCount="0.0"/>
+            <Node id="68" score="2_AMARILLO" recordCount="86.0">
+              <SimplePredicate field="INFECTADOS" operator="lessOrEqual" value="3778.0"/>
+              <ScoreDistribution value="1_VERDE" recordCount="1.0"/>
+              <ScoreDistribution value="2_AMARILLO" recordCount="76.0"/>
+              <ScoreDistribution value="3_AMBAR" recordCount="9.0"/>
+              <ScoreDistribution value="4_ROJO" recordCount="0.0"/>
+              <Node id="69" score="2_AMARILLO" recordCount="75.0">
+                <SimplePredicate field="DECESOS" operator="lessOrEqual" value="114.5"/>
+                <ScoreDistribution value="1_VERDE" recordCount="1.0"/>
+                <ScoreDistribution value="2_AMARILLO" recordCount="71.0"/>
+                <ScoreDistribution value="3_AMBAR" recordCount="3.0"/>
+                <ScoreDistribution value="4_ROJO" recordCount="0.0"/>
+                <Node id="70" score="2_AMARILLO" recordCount="15.0">
+                  <SimplePredicate field="INFECTADOS" operator="lessOrEqual" value="1965.5"/>
+                  <ScoreDistribution value="1_VERDE" recordCount="0.0"/>
+                  <ScoreDistribution value="2_AMARILLO" recordCount="12.0"/>
+                  <ScoreDistribution value="3_AMBAR" recordCount="3.0"/>
+                  <ScoreDistribution value="4_ROJO" recordCount="0.0"/>
+                  <Node id="71" score="2_AMARILLO" recordCount="12.0">
+                    <SimplePredicate field="DECESOS" operator="lessOrEqual" value="95.0"/>
+                    <ScoreDistribution value="1_VERDE" recordCount="0.0"/>
+                    <ScoreDistribution value="2_AMARILLO" recordCount="12.0"/>
+                    <ScoreDistribution value="3_AMBAR" recordCount="0.0"/>
+                    <ScoreDistribution value="4_ROJO" recordCount="0.0"/>
+                  </Node>
+                  <Node id="72" score="3_AMBAR" recordCount="3.0">
+                    <SimplePredicate field="DECESOS" operator="greaterThan" value="95.0"/>
+                    <ScoreDistribution value="1_VERDE" recordCount="0.0"/>
+                    <ScoreDistribution value="2_AMARILLO" recordCount="0.0"/>
+                    <ScoreDistribution value="3_AMBAR" recordCount="3.0"/>
+                    <ScoreDistribution value="4_ROJO" recordCount="0.0"/>
+                  </Node>
+                </Node>
+                <Node id="73" score="2_AMARILLO" recordCount="60.0">
+                  <SimplePredicate field="INFECTADOS" operator="greaterThan" value="1965.5"/>
+                  <ScoreDistribution value="1_VERDE" recordCount="1.0"/>
+                  <ScoreDistribution value="2_AMARILLO" recordCount="59.0"/>
+                  <ScoreDistribution value="3_AMBAR" recordCount="0.0"/>
+                  <ScoreDistribution value="4_ROJO" recordCount="0.0"/>
+                </Node>
+              </Node>
+              <Node id="78" score="3_AMBAR" recordCount="11.0">
+                <SimplePredicate field="DECESOS" operator="greaterThan" value="114.5"/>
+                <ScoreDistribution value="1_VERDE" recordCount="0.0"/>
+                <ScoreDistribution value="2_AMARILLO" recordCount="5.0"/>
+                <ScoreDistribution value="3_AMBAR" recordCount="6.0"/>
+                <ScoreDistribution value="4_ROJO" recordCount="0.0"/>
+                <Node id="79" score="3_AMBAR" recordCount="5.0">
+                  <SimplePredicate field="INFECTADOS" operator="lessOrEqual" value="2489.0"/>
+                  <ScoreDistribution value="1_VERDE" recordCount="0.0"/>
+                  <ScoreDistribution value="2_AMARILLO" recordCount="0.0"/>
+                  <ScoreDistribution value="3_AMBAR" recordCount="5.0"/>
+                  <ScoreDistribution value="4_ROJO" recordCount="0.0"/>
+                </Node>
+                <Node id="80" score="2_AMARILLO" recordCount="6.0">
+                  <SimplePredicate field="INFECTADOS" operator="greaterThan" value="2489.0"/>
+                  <ScoreDistribution value="1_VERDE" recordCount="0.0"/>
+                  <ScoreDistribution value="2_AMARILLO" recordCount="5.0"/>
+                  <ScoreDistribution value="3_AMBAR" recordCount="1.0"/>
+                  <ScoreDistribution value="4_ROJO" recordCount="0.0"/>
+                </Node>
+              </Node>
+            </Node>
+            <Node id="83" score="2_AMARILLO" recordCount="17.0">
+              <SimplePredicate field="INFECTADOS" operator="greaterThan" value="3778.0"/>
+              <ScoreDistribution value="1_VERDE" recordCount="7.0"/>
+              <ScoreDistribution value="2_AMARILLO" recordCount="10.0"/>
+              <ScoreDistribution value="3_AMBAR" recordCount="0.0"/>
+              <ScoreDistribution value="4_ROJO" recordCount="0.0"/>
+              <Node id="84" score="1_VERDE" recordCount="8.0">
+                <SimplePredicate field="DECESOS" operator="lessOrEqual" value="83.5"/>
+                <ScoreDistribution value="1_VERDE" recordCount="7.0"/>
+                <ScoreDistribution value="2_AMARILLO" recordCount="1.0"/>
+                <ScoreDistribution value="3_AMBAR" recordCount="0.0"/>
+                <ScoreDistribution value="4_ROJO" recordCount="0.0"/>
+              </Node>
+              <Node id="87" score="2_AMARILLO" recordCount="9.0">
+                <SimplePredicate field="DECESOS" operator="greaterThan" value="83.5"/>
+                <ScoreDistribution value="1_VERDE" recordCount="0.0"/>
+                <ScoreDistribution value="2_AMARILLO" recordCount="9.0"/>
+                <ScoreDistribution value="3_AMBAR" recordCount="0.0"/>
+                <ScoreDistribution value="4_ROJO" recordCount="0.0"/>
+              </Node>
+            </Node>
+          </Node>
+        </Node>
+      </Node>
+      <Node id="88" score="3_AMBAR" recordCount="19.0">
+        <SimplePredicate field="VACUNAS" operator="greaterThan" value="687909.0"/>
+        <ScoreDistribution value="1_VERDE" recordCount="0.0"/>
+        <ScoreDistribution value="2_AMARILLO" recordCount="1.0"/>
+        <ScoreDistribution value="3_AMBAR" recordCount="13.0"/>
+        <ScoreDistribution value="4_ROJO" recordCount="5.0"/>
+        <Node id="89" score="4_ROJO" recordCount="6.0">
+          <SimplePredicate field="INFECTADOS" operator="lessOrEqual" value="1644.0"/>
+          <ScoreDistribution value="1_VERDE" recordCount="0.0"/>
+          <ScoreDistribution value="2_AMARILLO" recordCount="1.0"/>
+          <ScoreDistribution value="3_AMBAR" recordCount="0.0"/>
+          <ScoreDistribution value="4_ROJO" recordCount="5.0"/>
+        </Node>
+        <Node id="92" score="3_AMBAR" recordCount="13.0">
+          <SimplePredicate field="INFECTADOS" operator="greaterThan" value="1644.0"/>
+          <ScoreDistribution value="1_VERDE" recordCount="0.0"/>
+          <ScoreDistribution value="2_AMARILLO" recordCount="0.0"/>
+          <ScoreDistribution value="3_AMBAR" recordCount="13.0"/>
+          <ScoreDistribution value="4_ROJO" recordCount="0.0"/>
+        </Node>
+      </Node>
+    </Node>
+  </TreeModel>
+</PMML>
